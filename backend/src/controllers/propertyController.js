@@ -3,7 +3,7 @@
 
 import Property from "../Models/propertyModel.js";
 import {APIFeatures} from "../utils/APIFeatures.js";
-import imagekit from "../utils/imagekitIO.js";
+import imagekit from "../utils/ImagekitIO.js";
 
 // get all properties
 const getProperties = async (req, res) => {
