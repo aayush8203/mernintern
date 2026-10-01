@@ -1,0 +1,30 @@
+# Node.js
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Environment variables
+.env
+.env.*
+.env.local
+.env.development
+.env.production
+!.env.example # Keep .env.example if it exists and is intended to be committed
+
+# Build artifacts
+dist/
+build/
+coverage/
+
+# OS and Editor files
+.DS_Store
+.vscode/ # Ignore all .vscode files
+!.vscode/extensions.json # Uncomment if extensions.json needs to be kept
+# You can add other editor/IDE specific files here if needed
+
+# Logs
+logs
+*.log
