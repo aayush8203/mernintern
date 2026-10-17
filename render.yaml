@@ -1,0 +1,40 @@
+services:
+  - type: web
+    name: homelyhub-backend
+    env: node
+    plan: free
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: JWT_EXPIRE_IN
+        value: 90d
+      - key: JWT_COOKIE_EXPIRE_IN
+        value: 90
+      - key: ORIGIN_ACCESS_URL
+        sync: false
+      - key: IMAGEKIT_PUBLIC_KEY
+        sync: false
+      - key: IMAGEKIT_PRIVATE_KEY
+        sync: false
+      - key: IMAGEKIT_URL_ENDPOINT
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+      - key: MAILTRAP_SMTP_HOST
+        sync: false
+      - key: MAILTRAP_SMTP_PORT
+        sync: false
+      - key: MAILTRAP_SMTP_USER
+        sync: false
+      - key: MAILTRAP_SMTP_PASSWORD
+        sync: false
