@@ -27,7 +27,7 @@ const PaymentForm = ({
       return true;
     }
 
-    return currentBookings.some((booking) => {
+    return (currentBookings || []).some((booking) => {
       const startDate = moment(booking.fromDate).startOf("day");
       const endDate = moment(booking.toDate).startOf("day");
       const currentMoment = moment(current.toDate()).startOf("day");

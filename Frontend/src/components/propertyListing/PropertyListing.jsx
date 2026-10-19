@@ -15,18 +15,41 @@ const PropertyListing = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
 
-  const {loading,propertydetails} = useSelector((state) => state.propertyDetails);
+  const { loading, propertydetails, propertyDetails, error } = useSelector(
+    (state) => state.propertyDetails
+  );
+  const currentProperty = propertydetails || propertyDetails;
 
   useEffect(() => {
-    dispatch(getPropertyDetails(id));
+    if (id) {
+      dispatch(getPropertyDetails(id));
+    }
   }, [dispatch, id]);
 
-  if (loading || !propertydetails)
+  if (loading) {
     return (
       <div className="row justify-content-around mt-5">
         <LoadingSpinner />
       </div>
     );
+  }
+
+  if (error) {
+    return (
+      <div className="container mt-5 text-center">
+        <h3>Failed to load property details</h3>
+        <p className="text-danger">{error}</p>
+      </div>
+    );
+  }
+
+  if (!currentProperty) {
+    return (
+      <div className="row justify-content-around mt-5">
+        <LoadingSpinner />
+      </div>
+    );
+  }
 
   const {
     propertyName,
@@ -37,7 +60,7 @@ const PropertyListing = () => {
     maximumGuest,
     price,
     currentBookings,
-  } = propertydetails;
+  } = currentProperty;
 
   return (
     <div className="property-container">

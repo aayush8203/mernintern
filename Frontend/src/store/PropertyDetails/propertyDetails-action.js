@@ -3,17 +3,16 @@ import {axiosInstance} from "../../utils/axios";
 
 
 export const getPropertyDetails = (Id) => async (dispatch) => {
-
-    try{
+    try {
         dispatch(propertyDetailsActions.getListRequest());
         const response = await axiosInstance.get(`/v1/rent/listing/${Id}`);
-        if(!response){
+        if (!response) {
             throw new Error('could not fetch data');
         }
-        const data = response.data;
+        const data = response.data?.data || response.data;
         dispatch(propertyDetailsActions.getPropertyDetails(data));
     } catch (error) {
-        dispatch(propertyDetailsActions.getErrors(error.response.data.message));
+        const errorMsg = error?.response?.data?.message || error?.message || 'Error fetching property details';
+        dispatch(propertyDetailsActions.getErrors(errorMsg));
     }
-
-}
+};

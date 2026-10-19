@@ -3,6 +3,7 @@ import {createSlice} from '@reduxjs/toolkit';
 const propertyDetailsSlice = createSlice({
     name: 'propertyDetails',
     initialState: {
+        propertydetails: null,
         propertyDetails: null,
         loading : false,
         error: null
@@ -10,15 +11,17 @@ const propertyDetailsSlice = createSlice({
     reducers: {
         getListRequest: (state) => {
             state.loading = true;
+            state.error = null;
         },
         getPropertyDetails(state, action){
-            state.propertyDetails = action.payload;
+            const data = action.payload?.data || action.payload;
+            state.propertydetails = data;
+            state.propertyDetails = data;
             state.loading = false;
         },
         getErrors(state, action){
             state.error = action.payload;
             state.loading = false;
-
         }
     }
 })
