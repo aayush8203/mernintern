@@ -67,14 +67,15 @@ const Header = () => {
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              {user.avatar.url && (
+              {user?.avatar?.url ? (
                 <img
                   src={user.avatar.url}
                   className="user-img"
                   alt="icon"
                 />
+              ) : (
+                "account_circle"
               )}
-              {!user.avatar.url && "account_circle"}
             </span>
 
             <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">

@@ -22,21 +22,21 @@ const Profile = () => {
               <figure className="avatar-profile text-center">
                 <img
                   className="rounded-circle w-100 h-100 "
-                  src={user.avatar.url}
+                  src={user?.avatar?.url || "https://i.pravatar.cc/150?img=3"}
                   alt="avatar"
                 />
               </figure>
-              <h3>Welcome {user.name}!</h3>
+              <h3>Welcome {user?.name || "User"}!</h3>
             </div>
             <div className="userinfo">
               <h4>Full Name</h4>
-              <p>{user.name}</p>
+              <p>{user?.name || ""}</p>
 
               <h4>Email Address</h4>
-              <p>{user.email}</p>
+              <p>{user?.email || ""}</p>
 
               <h4>Joined On</h4>
-              <p>{moment(user.createdAt).format("MMMM Do YYYY")}</p>
+              <p>{user?.createdAt ? moment(user.createdAt).format("MMMM Do YYYY") : "Recently"}</p>
 
               <div className="buttons">
                 <Link

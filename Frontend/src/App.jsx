@@ -36,15 +36,15 @@ function App() {
   const dispatch = useDispatch();
   const {error, user} = useSelector((state) => state.user);
 
-  useEffect(()=>{
-    if(error){
-      dispatch(userActions.clearError());
+  useEffect(() => {
+    if (error) {
+      dispatch(userActions.clearErrors());
     }
-  }),[dispatch, error];
+  }, [dispatch, error]);
 
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(currentUser());
-  },[dispatch]);
+  }, [dispatch]);
 
   return (
     <div className="App">

@@ -54,6 +54,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/v1/rent/users", userRoutes);
+app.use("/api/v1/rent/user", userRoutes);
 app.use("/api/v1/rent/listing", propertyRouter);
 app.use("/api/v1/rent/user/booking",bookingRouter)
 app.use("/api/v1/rent/trip",tripRouter)

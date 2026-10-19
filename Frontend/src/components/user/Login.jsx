@@ -22,16 +22,15 @@ const Login = () => {
     dispatch(getLogin({email, password}));
   }
 
-useEffect(() => {
-      if (error) {
-        toast.error(error);
-        dispatch(userActions.clearError());
-      } else if (isAuthenticated) {
-        navigate("/");
-        toast.success("Login successful");
-      }
-  
-  },[isAuthenticated,error,navigate,dispatch]);
+  useEffect(() => {
+    if (error) {
+      toast.error(typeof error === "string" ? error : error?.message || "Login failed");
+      dispatch(userActions.clearErrors());
+    } else if (isAuthenticated) {
+      navigate("/");
+      toast.success("Login successful");
+    }
+  }, [isAuthenticated, error, navigate, dispatch]);
 
   return (
     <Fragment>

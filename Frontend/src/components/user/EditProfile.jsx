@@ -10,7 +10,7 @@ import { userActions } from "../../store/user/user-slice";
 const EditProfile = () => {
   const { user, errors, loading } = useSelector((state) => state.user);
   const [avatarPreview, setAvatarPreview] = useState(
-    user.avatar.url || "https://i.pravatar.cc/150?img=3"
+    user?.avatar?.url || "https://i.pravatar.cc/150?img=3"
   );
   const dispatch = useDispatch();
   const navigate = useNavigate();

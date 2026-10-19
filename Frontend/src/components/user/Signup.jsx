@@ -39,14 +39,13 @@ const Signup = () => {
 
   useEffect(() => {
     if (error) {
-      toast.error(error);
-      dispatch(userActions.clearError());
+      toast.error(typeof error === "string" ? error : error?.message || "Signup failed");
+      dispatch(userActions.clearErrors());
     } else if (isAuthenticated) {
       navigate("/");
       toast.success("Signup successful");
     }
-
-  },[isAuthenticated,error,navigate,dispatch]);
+  }, [isAuthenticated, error, navigate, dispatch]);
 
   return (
     <Fragment>
